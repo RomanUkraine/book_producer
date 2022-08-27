@@ -30,7 +30,7 @@ gem "jbuilder"
 
 gem 'erp-data-sync', path: '../erp-data-sync'
 
-gem 'redis', '~> 4.0'
+gem 'redis', '4.7.1'
 gem 'sidekiq'
 
 gem 'sidekiq-statistic'
