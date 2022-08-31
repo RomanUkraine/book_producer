@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: book-producer
+  labels:
+    app: book-producer
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: book-producer
+  template:
+    metadata:
+      labels:
+        app: book-producer
+    spec:
+      containers:
+      - name: book-producer
+        image: book-producer:latest
+        imagePullPolicy: Never
+        env:
+          - name: PORT
+            value: "3000"
+          - name: DATABASE_NAME
+            value: "book_producer_production"
+          - name: DATABASE_USER
+            value: "admin"
+          - name: DATABASE_PASSWORD
+            value: "adminS3cret"
+          - name: DATABASE_HOST
+            value: "postgres"
+          - name: DATABASE_PORT
+            value: "5432"
+          - name: REDIS_BUS_DB
+            value: "15"
+          - name: REDIS_URL
+            value: "redis://redis:6379/4"
+        ports:
+          - containerPort: 3000
