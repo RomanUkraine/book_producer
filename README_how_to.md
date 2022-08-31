@@ -1,5 +1,5 @@
 #### LOCAL DEVELOPMENT
-#### set up token into Gemfile for gem 'erp-data-sync'!!! and after that run: ```bundle install```
+#### set up token (generated there https://github.com/settings/tokens - use "Select scopes" - only - repo. It shoul be enough) into Gemfile for gem 'erp-data-sync'!!! and after that run: ```bundle install```
 
 ```sh
   rails s -p 3001 / 3002
