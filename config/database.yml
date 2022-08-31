@@ -14,12 +14,38 @@
 # Configure Using Gemfile
 # gem "pg"
 #
+# default: &default
+#   # adapter: postgresql
+#   # encoding: unicode
+#   # # For details on connection pooling, see Rails configuration guide
+#   # # https://guides.rubyonrails.org/configuring.html#database-pooling
+#   # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+#   adapter: postgresql
+#   encoding: unicode
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 2 } %>
+#   timeout: 5000
+#   # <%= ENV['DATABASE_NAME'] %>
+#   database: book_producer_production
+#   # <%= ENV['DATABASE_USER'] %>
+#   user: admin
+#   # <%= ENV['DATABASE_PASSWORD'] %>
+#   password: adminS3cret
+#   # <%= ENV['DATABASE_HOST'] %>
+#   host: fullstack-postgres
+#   # <%= ENV['DATABASE_PORT'] %>
+#   port: 5432
+
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 2 } %>
+  timeout: 5000
+  database: <%= ENV['DATABASE_NAME'] %>
+  user: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV['DATABASE_HOST'] %>
+  port: <%= ENV['DATABASE_PORT'] %>
 
 development:
   <<: *default
@@ -79,8 +105,12 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+# production:
+#   <<: *default
+#   database: book_producer_production
+#   username: book_producer
+#   password: <%= ENV["BOOK_PRODUCER_DATABASE_PASSWORD"] %>
+
+
 production:
   <<: *default
-  database: book_producer_production
-  username: book_producer
-  password: <%= ENV["BOOK_PRODUCER_DATABASE_PASSWORD"] %>

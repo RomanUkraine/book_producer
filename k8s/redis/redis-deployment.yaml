@@ -1,0 +1,29 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: redis
+  labels:
+    app: redis      
+spec:
+  selector:
+    matchLabels:    
+      app: redis
+      mservice: coupon
+      type: db
+  replicas: 1  
+  template:
+    metadata:
+      labels:  
+        app: redis
+        mservice: coupon
+        type: db
+    spec:
+      containers:
+      - name: coupon
+        image: redis
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 6379

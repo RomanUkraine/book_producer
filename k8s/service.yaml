@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: book-producer-service
+spec:
+  selector:
+    app: book-producer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
